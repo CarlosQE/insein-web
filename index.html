@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Primary -->
+  <title>INSEIN SRL | Ingeniería en Seguridad Industrial — Bolivia</title>
+  <meta name="description" content="Empresa boliviana especializada en seguridad industrial, gestión de emergencias, paradas de planta, salud ocupacional y capacitación técnica. Más de 50 especialistas en terreno." />
+  <meta name="keywords" content="seguridad industrial Bolivia, paradas de planta, salud ocupacional, fisioterapia ocupacional, reacción incendios, NFPA, ISO 45001, Tarija, San Cristóbal" />
+  <meta name="author" content="INSEIN SRL" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://carlosqe.github.io/insein-web/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://carlosqe.github.io/insein-web/" />
+  <meta property="og:title"       content="INSEIN SRL | Seguridad Industrial Bolivia" />
+  <meta property="og:description" content="Ingeniería en seguridad industrial, salud ocupacional y capacitación técnica al servicio de la industria boliviana." />
+  <meta property="og:image"       content="assets/img/logo-imagotipo.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/logo-isotipo.png" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════ -->
+  <header id="navbar" class="navbar">
+    <div class="container">
+
+      <!-- Logo -->
+      <a href="#hero" class="nav-logo" aria-label="INSEIN SRL — Inicio">
+        <img src="assets/img/logo-imagotipo.png" alt="INSEIN SRL Logo" />
+      </a>
+
+      <!-- Links desktop -->
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios" class="nav-link" data-i18n="nav_services">Servicios</a>
+        <a href="#nosotros"  class="nav-link" data-i18n="nav_about">Nosotros</a>
+        <a href="#galeria"   class="nav-link" data-i18n="nav_gallery">Galería</a>
+        <a href="#blog"      class="nav-link" data-i18n="nav_blog">Blog</a>
+        <a href="#contacto"  class="nav-link" data-i18n="nav_contact">Contacto</a>
+      </nav>
+
+      <!-- Acciones desktop -->
+      <div class="nav-actions">
+        <!-- Selector idioma -->
+        <div class="lang-toggle" role="group" aria-label="Selección de idioma">
+          <button class="lang-btn active" data-lang="es" aria-label="Español">ES</button>
+          <button class="lang-btn"        data-lang="en" aria-label="English">EN</button>
+        </div>
+
+        <!-- CTA desktop -->
+        <a href="#contacto" class="btn-primary nav-cta">
+          <span data-i18n="nav_cta">Solicitar Cotización</span>
+        </a>
+
+        <!-- Hamburger -->
+        <button id="hamburger" class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav id="mobile-menu" class="nav-mobile" aria-label="Menú móvil">
+    <a href="#servicios" class="nav-mobile-link" data-i18n="nav_services">Servicios</a>
+    <a href="#nosotros"  class="nav-mobile-link" data-i18n="nav_about">Nosotros</a>
+    <a href="#galeria"   class="nav-mobile-link" data-i18n="nav_gallery">Galería</a>
+    <a href="#blog"      class="nav-mobile-link" data-i18n="nav_blog">Blog</a>
+    <a href="#contacto"  class="nav-mobile-link" data-i18n="nav_contact">Contacto</a>
+    <a href="#contacto"  class="btn-primary" style="margin-top:24px; text-align:center; justify-content:center;">
+      <span data-i18n="nav_cta">Solicitar Cotización</span>
+    </a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════ -->
+  <section id="hero" class="hero">
+
+    <!-- Fondo -->
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
+        alt="Ingeniería Industrial INSEIN SRL"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Grid decorativo -->
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-content">
+
+        <!-- Badge -->
+        <div class="hero-badge">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <span data-i18n="hero_badge">Cliente Activo: Minera San Cristóbal, Bolivia</span>
+        </div>
+
+        <!-- Título principal -->
+        <h1 class="hero-title">
+          <span class="line-accent" data-i18n="hero_title_1">Seguridad</span>
+          <span data-i18n="hero_title_2">Industrial</span>
+          <span class="line-outline" data-i18n="hero_title_3">de Excelencia</span>
+        </h1>
+
+        <!-- Descripción -->
+        <p class="hero-desc" data-i18n="hero_desc">
+          Ingeniería en seguridad industrial, salud ocupacional y capacitación técnica. Más de 50 especialistas desplegados en terreno, donde su operación lo necesite.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-actions">
+          <a href="#servicios" class="btn-primary">
+            <span data-i18n="hero_cta_1">Ver Servicios</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#contacto" class="btn-outline" data-i18n="hero_cta_2">Solicitar Cotización</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats" role="list">
+          <div class="stat-item" role="listitem">
+            <span class="stat-number" data-counter="+50" aria-label="Más de 50 especialistas">+50</span>
+            <span class="stat-label" data-i18n="stat_1_label">Especialistas</span>
+          </div>
+          <div class="stat-item" role="listitem">
+            <span class="stat-number" data-counter="+5" aria-label="Más de 5 años">+5</span>
+            <span class="stat-label" data-i18n="stat_2_label">Años activos</span>
+          </div>
+          <div class="stat-item" role="listitem">
+            <span class="stat-number" data-counter="100%" aria-label="100% compromiso">100%</span>
+            <span class="stat-label" data-i18n="stat_3_label">Compromiso</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <span data-i18n="hero_scroll">Explorar</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICIOS
+  ════════════════════════════════════════════════ -->
+  <section id="servicios" class="services">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="reveal">
+          <span class="section-tag" data-i18n="services_tag">Nuestros Servicios</span>
+          <h2 class="section-title">
+            <span data-i18n="services_title_1">Divisiones</span><br>
+            <span class="accent italic" data-i18n="services_title_2">Operativas</span>
+          </h2>
+        </div>
+
+        <!-- Tabs -->
+        <div class="services-tabs reveal delay-1" role="tablist">
+          <button class="tab-btn active" data-tab="emergency" role="tab" aria-selected="true" data-i18n="tab_emergency">
+            Gestión de Emergencias
+          </button>
+          <button class="tab-btn" data-tab="technical" role="tab" aria-selected="false" data-i18n="tab_technical">
+            Seguridad Técnica
+          </button>
+          <button class="tab-btn" data-tab="health" role="tab" aria-selected="false" data-i18n="tab_health">
+            Salud &amp; Capacitación
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel: Gestión de Emergencias -->
+      <div id="tab-emergency" class="services-grid active" role="tabpanel">
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=2070&auto=format&fit=crop" alt="Paradas de Planta" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_plant_cat">Emergencias</span>
+            <h3 class="service-card-title" data-i18n="svc_plant_title">Paradas de Planta</h3>
+            <p class="service-card-desc" data-i18n="svc_plant_desc">Supervisión integral de seguridad en mantenimientos mayores, gestión de permisos y control de sub-contratistas bajo estándares internacionales.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=2070&auto=format&fit=crop" alt="Reacción ante Incendios" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_fire_cat">Emergencias</span>
+            <h3 class="service-card-title" data-i18n="svc_fire_title">Reacción ante Incendios</h3>
+            <p class="service-card-desc" data-i18n="svc_fire_desc">Brigadas especializadas, planes de contingencia y simulacros bajo normativa NFPA para industria minera, manufacturera y energética.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=2070&auto=format&fit=crop" alt="Señalización Industrial" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_sign_cat">Emergencias</span>
+            <h3 class="service-card-title" data-i18n="svc_sign_title">Señalización Industrial</h3>
+            <p class="service-card-desc" data-i18n="svc_sign_desc">Diagnóstico, diseño e implementación de sistemas de señalización en zonas de riesgo crítico conforme a normas internacionales.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Panel: Seguridad Técnica -->
+      <div id="tab-technical" class="services-grid" role="tabpanel">
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" alt="Seguridad Eléctrica" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_elec_cat">Seguridad Técnica</span>
+            <h3 class="service-card-title" data-i18n="svc_elec_title">Seguridad Eléctrica</h3>
+            <p class="service-card-desc" data-i18n="svc_elec_desc">Auditorías, bloqueo/etiquetado (LOTO) y capacitación NFPA 70E para ambientes de alto riesgo eléctrico.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="Trabajos en Altura" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_height_cat">Seguridad Técnica</span>
+            <h3 class="service-card-title" data-i18n="svc_height_title">Trabajos en Altura</h3>
+            <p class="service-card-desc" data-i18n="svc_height_desc">Protocolos de acceso y rescate en altura, certificación de equipos y entrenamiento de brigadistas especializados.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1578674473215-9e07ee2e577d?q=80&w=2070&auto=format&fit=crop" alt="Manejo de Explosivos" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_explo_cat">Seguridad Técnica</span>
+            <h3 class="service-card-title" data-i18n="svc_explo_title">Manejo de Explosivos</h3>
+            <p class="service-card-desc" data-i18n="svc_explo_desc">Asesoría técnica y capacitación para actividades con explosivos en entornos mineros, cumpliendo regulaciones bolivianas.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Panel: Salud & Capacitación -->
+      <div id="tab-health" class="services-grid" role="tabpanel">
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2072&auto=format&fit=crop" alt="Salud Ocupacional" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_occ_cat">Salud Ocupacional</span>
+            <h3 class="service-card-title" data-i18n="svc_occ_title">Salud Ocupacional</h3>
+            <p class="service-card-desc" data-i18n="svc_occ_desc">Programas integrales de salud ocupacional, vigilancia epidemiológica, exámenes pre-ocupacionales y periódicos.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop" alt="Fisioterapia Ocupacional" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_physio_cat">Salud Ocupacional</span>
+            <h3 class="service-card-title" data-i18n="svc_physio_title">Fisioterapia Ocupacional</h3>
+            <p class="service-card-desc" data-i18n="svc_physio_desc">Equipo clínico especializado en lesiones laborales, rehabilitación y programas preventivos para trabajadores industriales.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop" alt="Capacitaciones Técnicas" loading="lazy" />
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <span class="service-card-cat" data-i18n="svc_training_cat">Capacitación</span>
+            <h3 class="service-card-title" data-i18n="svc_training_title">Capacitaciones Técnicas</h3>
+            <p class="service-card-desc" data-i18n="svc_training_desc">Programas de formación en seguridad industrial, primeros auxilios, manejo de EPP y cultura de prevención.</p>
+            <span class="service-card-arrow">
+              <span data-i18n="svc_more">Ver detalles</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       NOSOTROS / METODOLOGÍA
+  ════════════════════════════════════════════════ -->
+  <section id="nosotros" class="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Visual -->
+        <div class="about-visual reveal-left">
+          <img
+            class="about-img-main"
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=900&auto=format&fit=crop"
+            alt="INSEIN SRL — Equipo en terreno"
+            loading="lazy"
+          />
+          <img
+            class="about-img-accent"
+            src="https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=600&auto=format&fit=crop"
+            alt="Seguridad industrial Bolivia"
+            loading="lazy"
+          />
+          <div class="about-stat-badge">
+            <span class="big" data-counter="+50">+50</span>
+            <span class="small" data-i18n="about_badge_small">Especialistas</span>
+          </div>
+        </div>
+
+        <!-- Contenido -->
+        <div>
+          <div class="reveal">
+            <span class="section-tag" data-i18n="about_tag">Nuestra Metodología</span>
+            <h2 class="section-title" style="margin-bottom: 8px;">
+              <span data-i18n="about_title_1">Más que</span><br>
+              <span data-i18n="about_title_2">Consultores,</span><br>
+              <span class="accent italic" data-i18n="about_title_3">Aliados Estratégicos</span>
+            </h2>
+            <p style="font-size:0.9rem; color:var(--steel-light); line-height:1.7; max-width:480px; margin-top:20px;" data-i18n="about_desc">
+              No solo auditamos: transformamos la cultura de seguridad de su organización mediante evidencia técnica, presencia en terreno y compromiso operativo total.
+            </p>
+          </div>
+
+          <!-- Pasos -->
+          <div class="methodology-steps">
+            <div class="reveal delay-1">
+              <span class="step-number" data-i18n="step_1_num">01</span>
+              <h4 class="step-title" data-i18n="step_1_title">Diagnóstico Situacional</h4>
+              <p class="step-desc" data-i18n="step_1_desc">Identificamos brechas de cumplimiento y riesgos críticos antes de intervenir.</p>
+            </div>
+            <div class="reveal delay-2">
+              <span class="step-number" data-i18n="step_2_num">02</span>
+              <h4 class="step-title" data-i18n="step_2_title">Ejecución en Terreno</h4>
+              <p class="step-desc" data-i18n="step_2_desc">Despliegue de ingenieros y especialistas directamente en su frente de trabajo.</p>
+            </div>
+            <div class="reveal delay-3">
+              <span class="step-number" data-i18n="step_3_num">03</span>
+              <h4 class="step-title" data-i18n="step_3_title">Control de Calidad</h4>
+              <p class="step-desc" data-i18n="step_3_desc">Verificación exhaustiva bajo estándares internacionales ISO/NFPA/OSHA.</p>
+            </div>
+            <div class="reveal delay-4">
+              <span class="step-number" data-i18n="step_4_num">04</span>
+              <h4 class="step-title" data-i18n="step_4_title">Entrega de Evidencia</h4>
+              <p class="step-desc" data-i18n="step_4_desc">Reportes fotográficos, matrices de riesgo y certificados de cumplimiento.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       GALERÍA
+  ════════════════════════════════════════════════ -->
+  <section id="galeria" class="gallery">
+    <div class="container">
+      <div class="reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;">
+        <div>
+          <span class="section-tag" data-i18n="gallery_tag">Portafolio Visual</span>
+          <h2 class="section-title">
+            <span data-i18n="gallery_title_1">Proyectos</span><br>
+            <span class="accent italic" data-i18n="gallery_title_2">en Terreno</span>
+          </h2>
+        </div>
+        <a href="#contacto" class="btn-outline" data-i18n="gallery_cta">Ver Portafolio Completo</a>
+      </div>
+
+      <div class="gallery-grid reveal delay-1">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop" alt="Operación industrial minería" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Minera San Cristóbal</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=800&auto=format&fit=crop" alt="Brigada contra incendios" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Brigada NFPA</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop" alt="Seguridad eléctrica" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Seguridad Eléctrica</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop" alt="Trabajos en altura" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Trabajos en Altura</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Salud ocupacional" loading="lazy" />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Salud Ocupacional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       CERTIFICACIONES
+  ════════════════════════════════════════════════ -->
+  <section id="certificaciones" class="certs">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
+        <span class="section-tag" data-i18n="certs_tag">Normativas y Estándares</span>
+        <h2 class="section-title">
+          <span data-i18n="certs_title_1">Trabajamos bajo</span><br>
+          <span class="accent italic" data-i18n="certs_title_2">Estándares Globales</span>
+        </h2>
+      </div>
+
+      <div class="certs-grid">
+        <div class="cert-card reveal delay-1">
+          <div class="cert-icon">ISO</div>
+          <h3 class="cert-name" data-i18n="cert_iso_name">ISO 45001</h3>
+          <p class="cert-desc" data-i18n="cert_iso_desc">Sistema de Gestión de Seguridad y Salud en el Trabajo</p>
+        </div>
+        <div class="cert-card reveal delay-2">
+          <div class="cert-icon">NFPA</div>
+          <h3 class="cert-name" data-i18n="cert_nfpa_name">NFPA</h3>
+          <p class="cert-desc" data-i18n="cert_nfpa_desc">Protección contra incendios y seguridad eléctrica</p>
+        </div>
+        <div class="cert-card reveal delay-3">
+          <div class="cert-icon">OSHA</div>
+          <h3 class="cert-name" data-i18n="cert_osha_name">OSHA</h3>
+          <p class="cert-desc" data-i18n="cert_osha_desc">Estándares de seguridad y salud ocupacional EE.UU.</p>
+        </div>
+        <div class="cert-card reveal delay-4">
+          <div class="cert-icon" style="font-size:0.85rem;">IBN</div>
+          <h3 class="cert-name" data-i18n="cert_ibnorca_name">IBNORCA</h3>
+          <p class="cert-desc" data-i18n="cert_ibnorca_desc">Normas bolivianas de seguridad industrial</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       BLOG
+  ════════════════════════════════════════════════ -->
+  <section id="blog" class="blog">
+    <div class="container">
+      <div class="reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:0;">
+        <div>
+          <span class="section-tag" data-i18n="blog_tag">Conocimiento Industrial</span>
+          <h2 class="section-title">
+            <span data-i18n="blog_title_1">Últimas</span><br>
+            <span class="accent italic" data-i18n="blog_title_2">Publicaciones</span>
+          </h2>
+        </div>
+        <a href="#" class="btn-outline" data-i18n="blog_cta">Ver todos los artículos</a>
+      </div>
+
+      <div class="blog-grid">
+        <article class="blog-card reveal delay-1">
+          <div class="blog-card-img">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Gestión de Emergencias en Minería" loading="lazy" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-cat" data-i18n="blog_1_cat">Seguridad Industrial</span>
+              <span class="blog-card-date">Ene 2026</span>
+            </div>
+            <h3 class="blog-card-title" data-i18n="blog_1_title">Gestión de Emergencias en Minería: Protocolos Clave para 2026</h3>
+            <p class="blog-card-excerpt" data-i18n="blog_1_exc">Las operaciones mineras requieren planes de emergencia robustos. Analizamos los protocolos más efectivos implementados en la industria boliviana.</p>
+          </div>
+        </article>
+
+        <article class="blog-card reveal delay-2">
+          <div class="blog-card-img">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Fisioterapia Preventiva" loading="lazy" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-cat" data-i18n="blog_2_cat">Salud Ocupacional</span>
+              <span class="blog-card-date">Feb 2026</span>
+            </div>
+            <h3 class="blog-card-title" data-i18n="blog_2_title">Fisioterapia Preventiva: Reduciendo el Ausentismo Laboral</h3>
+            <p class="blog-card-excerpt" data-i18n="blog_2_exc">Programas preventivos bien diseñados reducen hasta un 40% las bajas laborales por lesiones musculoesqueléticas en entornos industriales.</p>
+          </div>
+        </article>
+
+        <article class="blog-card reveal delay-3">
+          <div class="blog-card-img">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop" alt="NFPA 70E Electricistas" loading="lazy" />
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-cat" data-i18n="blog_3_cat">Capacitación</span>
+              <span class="blog-card-date">Feb 2026</span>
+            </div>
+            <h3 class="blog-card-title" data-i18n="blog_3_title">NFPA 70E: Lo que Todo Electricista Industrial Debe Saber</h3>
+            <p class="blog-card-excerpt" data-i18n="blog_3_exc">Desglosamos los puntos críticos de la norma NFPA 70E y su aplicación en plantas industriales de Bolivia.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACTO
+  ════════════════════════════════════════════════ -->
+  <section id="contacto" class="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info -->
+        <div class="reveal-left">
+          <span class="section-tag" data-i18n="contact_tag">Trabajemos Juntos</span>
+          <h2 class="contact-info-title">
+            <span data-i18n="contact_title_1">Solicite su</span><br>
+            <span class="accent" data-i18n="contact_title_2">Cotización</span>
+          </h2>
+          <p class="contact-info-desc" data-i18n="contact_desc">
+            Contamos con la flexibilidad técnica para adaptarnos a las necesidades de su planta o proyecto en cualquier punto de Bolivia y el mundo.
+          </p>
+
+          <div class="contact-data">
+            <div class="contact-data-item">
+              <div class="contact-data-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <span class="contact-data-label" data-i18n="contact_loc_label">Sede Principal</span>
+                <span class="contact-data-value" data-i18n="contact_loc_value">Tarija, Bolivia</span>
+              </div>
+            </div>
+            <div class="contact-data-item">
+              <div class="contact-data-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <div>
+                <span class="contact-data-label" data-i18n="contact_cov_label">Cobertura</span>
+                <span class="contact-data-value" data-i18n="contact_cov_value">Nacional e Internacional</span>
+              </div>
+            </div>
+            <a href="mailto:info@inseinsrl.com" class="contact-data-item" style="text-decoration:none; display:flex;">
+              <div class="contact-data-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <span class="contact-data-label" data-i18n="contact_email_label">Correo Corporativo</span>
+                <span class="contact-data-value" data-i18n="contact_email_value">info@inseinsrl.com</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="reveal delay-2">
+          <form id="contact-form" class="contact-form" novalidate>
+            <!-- Nombre -->
+            <div class="form-group">
+              <label class="form-label" for="from_name" data-i18n="form_name">Nombre completo</label>
+              <input
+                type="text"
+                id="from_name"
+                name="from_name"
+                class="form-control"
+                data-i18n-placeholder="form_name"
+                placeholder="Nombre completo"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <!-- Empresa + Email -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="company" data-i18n="form_company">Empresa</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  class="form-control"
+                  data-i18n-placeholder="form_company"
+                  placeholder="Empresa"
+                  autocomplete="organization"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="from_email" data-i18n="form_email">Correo corporativo</label>
+                <input
+                  type="email"
+                  id="from_email"
+                  name="from_email"
+                  class="form-control"
+                  data-i18n-placeholder="form_email"
+                  placeholder="Correo corporativo"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+
+            <!-- Teléfono + Servicio -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="phone" data-i18n="form_phone">Teléfono</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-control"
+                  data-i18n-placeholder="form_phone"
+                  placeholder="Teléfono (opcional)"
+                  autocomplete="tel"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="service" data-i18n="form_service">Área de interés</label>
+                <select id="service" name="service" class="form-control" required>
+                  <option value="" data-i18n="form_service_p">Seleccione un servicio</option>
+                  <option data-i18n="form_svc_1">Paradas de Planta</option>
+                  <option data-i18n="form_svc_2">Reacción ante Incendios</option>
+                  <option data-i18n="form_svc_3">Señalización Industrial</option>
+                  <option data-i18n="form_svc_4">Seguridad Eléctrica</option>
+                  <option data-i18n="form_svc_5">Trabajos en Altura</option>
+                  <option data-i18n="form_svc_6">Manejo de Explosivos</option>
+                  <option data-i18n="form_svc_7">Salud Ocupacional</option>
+                  <option data-i18n="form_svc_8">Fisioterapia Ocupacional</option>
+                  <option data-i18n="form_svc_9">Capacitación Técnica</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Mensaje -->
+            <div class="form-group">
+              <label class="form-label" for="message" data-i18n="form_message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                data-i18n-placeholder="form_message"
+                placeholder="Detalle su requerimiento..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="form-submit" class="form-submit">
+              <span data-i18n="form_submit">Enviar Solicitud</span>
+            </button>
+
+            <!-- Status -->
+            <p id="form-status" class="form-status" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="assets/img/logo-imagotipo.png" alt="INSEIN SRL" />
+          <p class="footer-brand-desc" data-i18n="footer_desc">
+            Ingeniería en seguridad industrial, salud ocupacional y capacitación técnica al servicio de la industria boliviana.
+          </p>
+        </div>
+
+        <!-- Servicios -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_services">Servicios</h4>
+          <ul class="footer-links">
+            <li><a href="#servicios" class="footer-link" data-i18n="footer_svc_1">Gestión de Emergencias</a></li>
+            <li><a href="#servicios" class="footer-link" data-i18n="footer_svc_2">Seguridad Técnica</a></li>
+            <li><a href="#servicios" class="footer-link" data-i18n="footer_svc_3">Salud Ocupacional</a></li>
+            <li><a href="#servicios" class="footer-link" data-i18n="footer_svc_4">Capacitaciones</a></li>
+          </ul>
+        </div>
+
+        <!-- Empresa -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_company">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="#nosotros" class="footer-link" data-i18n="footer_comp_1">Sobre Nosotros</a></li>
+            <li><a href="#nosotros" class="footer-link" data-i18n="footer_comp_2">Metodología</a></li>
+            <li><a href="#galeria"  class="footer-link" data-i18n="footer_comp_3">Galería</a></li>
+            <li><a href="#blog"     class="footer-link" data-i18n="footer_comp_4">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer_contact">Contacto</h4>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="footer-contact-text">Tarija, Bolivia<br>Cobertura Nacional</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@inseinsrl.com" class="footer-contact-text" style="color:inherit; text-decoration:none; transition:color 0.3s;" onmouseover="this.style.color='#6ed60e'" onmouseout="this.style.color='inherit'">info@inseinsrl.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © <span id="footer-year">2026</span> INSEIN SRL. Bolivia —
+          <span data-i18n="footer_copy" style="display:inline;">Todos los derechos reservados.</span>
+        </p>
+        <div class="footer-policy">
+          <a href="#" data-i18n="footer_privacy">Política de Privacidad</a>
+          <a href="#" data-i18n="footer_terms">Términos de Servicio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════
+       WHATSAPP FLOTANTE
+       Nota: Actualizar número cuando esté disponible
+  ════════════════════════════════════════════════ -->
+  <a
+    href="https://wa.me/591XXXXXXXX?text=Hola%20INSEIN%20SRL%2C%20quisiera%20solicitar%20información%20sobre%20sus%20servicios."
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-label" data-i18n="wa_label">Consulta rápida</span>
+  </a>
+
+
+  <!-- ── Scripts ── -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact.js"></script>
+
+</body>
+</html>
