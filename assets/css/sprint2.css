@@ -1,0 +1,822 @@
+/* ============================================================
+   INSEIN SRL — Sprint 2 CSS
+   Mejoras visuales, galería lightbox, ticker, cards premium,
+   sección diferenciadores, scroll progress, cursor custom
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   SCROLL PROGRESS BAR
+───────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), #a8f03a);
+  z-index: 2000;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(110, 214, 14, 0.6);
+}
+
+/* ─────────────────────────────────────────────
+   CURSOR PERSONALIZADO
+───────────────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, opacity 0.3s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(110, 214, 14, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease,
+              left 0.08s ease, top 0.08s ease;
+}
+
+.cursor-ring.hovering {
+  width: 56px;
+  height: 56px;
+  border-color: var(--green);
+  background: rgba(110, 214, 14, 0.06);
+}
+
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ─────────────────────────────────────────────
+   TICKER — CLIENTES & SERVICIOS
+───────────────────────────────────────────── */
+.ticker-section {
+  background: var(--green);
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: tickerScroll 28s linear infinite;
+  width: max-content;
+}
+
+.ticker-track:hover { animation-play-state: paused; }
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 40px;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.ticker-dot {
+  width: 5px;
+  height: 5px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ticker-highlight {
+  background: rgba(0,0,0,0.12);
+  padding: 2px 10px;
+  border-radius: 2px;
+}
+
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────
+   SECCIÓN "POR QUÉ INSEIN" — Diferenciadores
+───────────────────────────────────────────── */
+.why {
+  padding: 120px 0;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elemento decorativo de fondo */
+.why::before {
+  content: 'INSEIN';
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 18vw;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(110, 214, 14, 0.05);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .why-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.why-text .section-tag { margin-bottom: 20px; }
+
+.why-lead {
+  font-size: 1rem;
+  color: var(--steel-light);
+  line-height: 1.8;
+  max-width: 460px;
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+
+/* Diferenciadores lista */
+.why-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.why-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  transition: border-color var(--transition), background var(--transition);
+  cursor: default;
+}
+
+.why-item:hover {
+  border-color: var(--border);
+  background: rgba(110, 214, 14, 0.03);
+}
+
+.why-item-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--green-glow);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+
+.why-item:hover .why-item-icon {
+  background: rgba(110, 214, 14, 0.2);
+}
+
+.why-item-title {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.why-item-desc {
+  font-size: 0.8rem;
+  color: var(--steel-light);
+  line-height: 1.6;
+}
+
+/* Métricas lado derecho */
+.why-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.why-metric {
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.why-metric:first-child {
+  grid-column: span 2;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.why-metric:hover:not(:first-child) { border-color: var(--border); }
+
+.why-metric::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.why-metric:hover::before { transform: scaleX(1); }
+.why-metric:first-child::before { display: none; }
+
+.why-metric-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--green);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.why-metric:first-child .why-metric-num {
+  font-size: 5rem;
+  color: var(--dark);
+}
+
+.why-metric-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+}
+
+.why-metric:first-child .why-metric-label {
+  color: rgba(13,15,18,0.7);
+}
+
+.why-metric-desc {
+  font-size: 0.78rem;
+  color: var(--steel);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.why-metric:first-child .why-metric-desc {
+  color: rgba(13,15,18,0.6);
+}
+
+/* ─────────────────────────────────────────────
+   GALERÍA MEJORADA CON LIGHTBOX
+───────────────────────────────────────────── */
+
+/* Override del grid de galería del Sprint 1 */
+.gallery-grid-s2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  margin-top: 60px;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid-s2 {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 300px 220px;
+  }
+
+  .gallery-item-s2:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+  .gallery-item-s2:nth-child(2) { grid-column: span 4; }
+  .gallery-item-s2:nth-child(3) { grid-column: span 3; }
+  .gallery-item-s2:nth-child(4) { grid-column: span 3; }
+  .gallery-item-s2:nth-child(5) { grid-column: span 4; }
+}
+
+.gallery-item-s2 {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: zoom-in;
+  aspect-ratio: 4/3;
+}
+
+@media (min-width: 768px) {
+  .gallery-item-s2 { aspect-ratio: unset; }
+}
+
+.gallery-item-s2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(30%) brightness(0.75);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.6s ease;
+}
+
+.gallery-item-s2:hover img {
+  transform: scale(1.08);
+  filter: grayscale(0%) brightness(0.9);
+}
+
+.gallery-item-s2-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,15,18,0.85) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gallery-item-s2:hover .gallery-item-s2-overlay { opacity: 1; }
+
+.gallery-item-s2-cat {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.gallery-item-s2-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--white);
+}
+
+.gallery-zoom-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(13,15,18,0.7);
+  border: 1px solid var(--border-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--transition), transform var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.gallery-item-s2:hover .gallery-zoom-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Lightbox ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 10, 14, 0.97);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img-wrap {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  transform: scale(0.92);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.open .lightbox-img-wrap { transform: scale(1); }
+
+.lightbox-img-wrap img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+  border: 1px solid var(--border-dim);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: -44px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.lightbox-close:hover {
+  background: var(--green);
+  color: var(--dark);
+  border-color: var(--green);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.lightbox-nav:hover { background: var(--green); color: var(--dark); border-color: var(--green); }
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+@media (max-width: 640px) {
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+}
+
+/* ─────────────────────────────────────────────
+   TARJETA CLIENTE ACTIVO — San Cristóbal
+───────────────────────────────────────────── */
+.client-banner {
+  padding: 80px 0;
+  background: var(--dark-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.client-banner::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(110, 214, 14, 0.03));
+  pointer-events: none;
+}
+
+.client-banner-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .client-banner-inner { grid-template-columns: 1fr auto; }
+}
+
+.client-banner-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.client-banner-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--green);
+}
+
+.client-banner-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 16px;
+}
+
+.client-banner-title .accent { color: var(--green); }
+
+.client-banner-desc {
+  font-size: 0.88rem;
+  color: var(--steel-light);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.client-stats-row {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.client-stat {
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  padding: 20px 28px;
+  min-width: 120px;
+}
+
+.client-stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--green);
+  display: block;
+  line-height: 1;
+}
+
+.client-stat-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel);
+  display: block;
+  margin-top: 4px;
+}
+
+.client-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.client-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  text-align: center;
+  padding: 24px;
+  position: relative;
+}
+
+.client-badge::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--border);
+  pointer-events: none;
+}
+
+.client-badge-text {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.client-badge-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.client-badge-country {
+  font-size: 0.65rem;
+  color: var(--green);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+  display: block;
+}
+
+/* ─────────────────────────────────────────────
+   MEJORAS GLOBALES AL CSS EXISTENTE
+───────────────────────────────────────────── */
+
+/* Cursor pointer en toda la web para dispositivos desktop */
+@media (hover: hover) {
+  a, button, .service-card, .gallery-item-s2,
+  .blog-card, .cert-card, .why-item { cursor: none; }
+}
+
+/* Mejora al hero: partículas decorativas */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 1px;
+  background: var(--green);
+  opacity: 0;
+  animation: particleFall linear infinite;
+}
+
+@keyframes particleFall {
+  0%   { opacity: 0; transform: translateY(-10px); }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(100vh); }
+}
+
+/* Corner decorativo para cards de certificaciones */
+.cert-card {
+  position: relative;
+}
+
+.cert-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.cert-card:hover::after { opacity: 1; }
+
+/* Línea activa en steps de metodología */
+.step {
+  padding-left: 20px;
+  border-left: 2px solid transparent;
+  transition: border-color var(--transition);
+}
+
+.step:hover { border-left-color: var(--green); }
+
+/* Mejora de la sección about: línea decorativa vertical */
+.about-grid::after {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    position: relative;
+  }
+  .about-grid::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    bottom: 10%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+  }
+}
+
+/* Mejoras al formulario: etiquetas flotantes feeling */
+.form-control:not(:placeholder-shown) + .form-label,
+.form-control:focus + .form-label {
+  color: var(--green);
+}
+
+/* Tag de sección — mejora de animación */
+.section-tag {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section-tag.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Override: cuando está dentro de .reveal.visible */
+.reveal.visible .section-tag {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─────────────────────────────────────────────
+   SERVICIO CARD PREMIUM — Mejoras Sprint 2
+───────────────────────────────────────────── */
+
+/* Número de posición en la card */
+.service-card-num {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(254,254,254,0.25);
+  letter-spacing: 0.1em;
+  z-index: 3;
+  transition: color var(--transition);
+}
+
+.service-card:hover .service-card-num {
+  color: var(--green);
+}
+
+/* Línea inferior animada en service card */
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--green);
+  z-index: 4;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover::after { width: 100%; }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE SPRINT 2
+───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .why::before { display: none; }
+  .client-badge { width: 140px; height: 140px; }
+  .client-badge-name { font-size: 1rem; }
+  .lightbox-nav { display: none; }
+}

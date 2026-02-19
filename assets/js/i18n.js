@@ -163,6 +163,38 @@ const translations = {
     // WHATSAPP
     wa_label: 'Consulta rápida',
 
+    // SPRINT 2 — POR QUÉ INSEIN
+    why_tag:          '¿Por qué INSEIN SRL?',
+    why_title_1:      'Especialistas,',
+    why_title_2:      'no generalistas',
+    why_lead:         'Cada proyecto se atiende con equipos especializados en la disciplina requerida. No subcontratamos personas no calificadas — nuestra red de 50 consultores son los mejores de su área.',
+    why_item1_title:  'Presencia física garantizada',
+    why_item1_desc:   'Nos desplazamos hasta su operación. Tarija, San Cristóbal, La Paz, Potosí — donde esté su planta, llegamos.',
+    why_item2_title:  'Respuesta rápida ante emergencias',
+    why_item2_desc:   'Brigadas en alerta permanente. Planes de contingencia activables en horas, no días.',
+    why_item3_title:  'Evidencia técnica documentada',
+    why_item3_desc:   'Cada intervención genera reportes, matrices de riesgo y certificados. Documentación auditable en todo momento.',
+    why_item4_title:  'Normativa internacional + boliviana',
+    why_item4_desc:   'Trabajamos bajo ISO 45001, NFPA, OSHA e IBNORCA simultáneamente para cumplimiento total en Bolivia.',
+    why_metric1_label: 'Especialistas activos',
+    why_metric1_desc:  'Red de consultores especializados por disciplina',
+    why_metric2_label: 'Años de operación',
+    why_metric2_desc:  'Trayectoria comprobada en Bolivia',
+    why_metric3_label: 'Servicios especializados',
+    why_metric3_desc:  'Cobertura integral de seguridad industrial',
+    why_metric4_label: 'Normas internacionales',
+    why_metric4_desc:  'ISO · NFPA · OSHA · IBNORCA',
+
+    // SPRINT 2 — CLIENTE ACTIVO
+    client_label:      'Cliente Activo',
+    client_title_1:    'Minera',
+    client_title_2:    'San Cristóbal',
+    client_desc:       'Proveemos servicios integrales de seguridad industrial a una de las minas de plata, zinc y plomo más grandes del mundo, operando en Potosí, Bolivia.',
+    client_stat1:      'Principal mineral',
+    client_stat2:      'Ubicación operativa',
+    client_stat3:      'Cobertura de seguridad',
+    client_badge_text: 'Trabajamos con',
+
     // FOOTER
     footer_desc:   'Ingeniería en seguridad industrial, salud ocupacional y capacitación técnica al servicio de la industria boliviana.',
     footer_services: 'Servicios',
@@ -339,6 +371,38 @@ const translations = {
 
     // WHATSAPP
     wa_label: 'Quick consultation',
+
+    // SPRINT 2 — WHY INSEIN
+    why_tag:          'Why INSEIN SRL?',
+    why_title_1:      'Specialists,',
+    why_title_2:      'not generalists',
+    why_lead:         'Each project is handled by teams specialized in the required discipline. We don\'t subcontract unqualified people — our network of 50 consultants are the best in their field.',
+    why_item1_title:  'Guaranteed physical presence',
+    why_item1_desc:   'We travel to your operation. Tarija, San Cristóbal, La Paz, Potosí — wherever your plant is, we get there.',
+    why_item2_title:  'Rapid emergency response',
+    why_item2_desc:   'Brigades on permanent alert. Contingency plans activatable in hours, not days.',
+    why_item3_title:  'Documented technical evidence',
+    why_item3_desc:   'Every intervention generates reports, risk matrices and certificates. Fully auditable documentation at all times.',
+    why_item4_title:  'International + Bolivian standards',
+    why_item4_desc:   'We work under ISO 45001, NFPA, OSHA and IBNORCA simultaneously for full compliance in Bolivia.',
+    why_metric1_label: 'Active specialists',
+    why_metric1_desc:  'Network of discipline-specific consultants',
+    why_metric2_label: 'Years of operation',
+    why_metric2_desc:  'Proven track record in Bolivia',
+    why_metric3_label: 'Specialized services',
+    why_metric3_desc:  'Comprehensive industrial safety coverage',
+    why_metric4_label: 'International standards',
+    why_metric4_desc:  'ISO · NFPA · OSHA · IBNORCA',
+
+    // SPRINT 2 — ACTIVE CLIENT
+    client_label:      'Active Client',
+    client_title_1:    'San Cristóbal',
+    client_title_2:    'Mine',
+    client_desc:       'We provide comprehensive industrial safety services to one of the largest silver, zinc and lead mines in the world, operating in Potosí, Bolivia.',
+    client_stat1:      'Primary mineral',
+    client_stat2:      'Operational location',
+    client_stat3:      'Safety coverage',
+    client_badge_text: 'We work with',
 
     // FOOTER
     footer_desc:   'Industrial safety engineering, occupational health and technical training at the service of the Bolivian industry.',
