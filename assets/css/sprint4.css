@@ -1,0 +1,151 @@
+/* ============================================================
+   INSEIN SRL — Sprint 4 CSS
+   Validación de formulario, mejoras de UX en contacto,
+   estado de envío animado, WhatsApp mejorado
+   ============================================================ */
+
+/* ── Estilos de error en campo ── */
+.form-control.error {
+  border-color: #ff4d4d !important;
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.12) !important;
+}
+
+.field-error {
+  display: block;
+  font-size: 0.68rem;
+  color: #ff4d4d;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+/* ── Botón submit con estado de carga ── */
+#form-submit {
+  position: relative;
+  overflow: hidden;
+  transition: background var(--transition), opacity var(--transition);
+}
+
+#form-submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+#form-submit:disabled::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  height: 2px;
+  width: 100%;
+  background: rgba(13, 15, 18, 0.3);
+  animation: loadingBar 1.6s ease infinite;
+}
+
+@keyframes loadingBar {
+  0%   { left: -100%; width: 60%; }
+  100% { left: 150%; width: 60%; }
+}
+
+/* ── Mensaje de estado mejorado ── */
+.form-status {
+  min-height: 36px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.form-status.success {
+  background: rgba(110, 214, 14, 0.1);
+  border: 1px solid rgba(110, 214, 14, 0.3);
+  color: var(--green);
+}
+
+.form-status.error {
+  background: rgba(255, 77, 77, 0.08);
+  border: 1px solid rgba(255, 77, 77, 0.25);
+  color: #ff4d4d;
+}
+
+/* ── WhatsApp flotante mejorado ── */
+.whatsapp-float {
+  bottom: 28px;
+  right: 28px;
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.3);
+}
+
+/* Tooltip al hacer hover */
+.whatsapp-float::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(13, 15, 18, 0.92);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dim);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.whatsapp-float:hover::before {
+  opacity: 1;
+}
+
+/* ── Nav link "Equipo" agregado ── */
+.nav-links .nav-link[href="#equipo"],
+.nav-mobile .nav-mobile-link[href="#equipo"] {
+  /* Hereda estilos normales, no necesita override */
+}
+
+/* ── Mejora: form label con asterisco en requeridos ── */
+.form-group [required] + label::after,
+label[for="from_name"]::after,
+label[for="from_email"]::after,
+label[for="service"]::after,
+label[for="message"]::after {
+  content: ' *';
+  color: var(--green);
+  font-size: 0.7rem;
+}
+
+/* ── Animación de entrada suave en hero stats ── */
+.hero-stats .stat-item {
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.hero-stats .stat-item:hover {
+  background: rgba(110, 214, 14, 0.05);
+  border-color: var(--border);
+}
+
+/* ── Mejora visual: Sección contacto separador top ── */
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+}
+
+/* ── Mejora: focus visible para accesibilidad ── */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* ── Responsive Sprint 4 ── */
+@media (max-width: 640px) {
+  .whatsapp-float::before { display: none; }
+}

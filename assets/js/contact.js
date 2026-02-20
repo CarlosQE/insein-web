@@ -1,109 +1,109 @@
 /**
- * INSEIN SRL — Módulo de Contacto con EmailJS
+ * INSEIN SRL — Módulo de Contacto (Sprint 4)
+ * EmailJS integrado, validación completa, UX de estado mejorada
  *
- * CONFIGURACIÓN REQUERIDA:
- * 1. Crear cuenta en https://www.emailjs.com (gratis hasta 200 emails/mes)
- * 2. Crear un servicio de email conectado a info@inseinsrl.com
- * 3. Crear un template con las variables: {{from_name}}, {{company}}, {{from_email}},
+ * CONFIGURACIÓN:
+ * 1. Crear cuenta en https://www.emailjs.com (gratis: 200 emails/mes)
+ * 2. Conectar servicio con info@inseinsrl.com
+ * 3. Crear template con: {{from_name}}, {{company}}, {{from_email}},
  *    {{phone}}, {{service}}, {{message}}
- * 4. Reemplazar los 3 valores de configuración abajo
- *
- * PARA TESTING LOCAL: Se puede simular el envío con DEMO_MODE = true
+ * 4. Reemplazar los 3 valores de abajo y cambiar demoMode: false
  */
 
 const EMAILJS_CONFIG = {
-  publicKey:  'N1z16qLqUaa2_wsTf',   // ← Reemplazar con tu Public Key de EmailJS
-  serviceId:  'service_ed241d5',   // ← Reemplazar con tu Service ID
-  templateId: 'template_1rty73q',  // ← Reemplazar con tu Template ID
-  demoMode:   true,                // ← Cambiar a false en producción
+  publicKey:  'YOUR_PUBLIC_KEY',
+  serviceId:  'YOUR_SERVICE_ID',
+  templateId: 'YOUR_TEMPLATE_ID',
+  demoMode:   true,
+  toEmail:    'info@inseinsrl.com',
 };
 
-// Inicializar EmailJS
-(function initEmailJS() {
-  if (typeof emailjs === 'undefined') {
-    console.warn('[INSEIN Contact] EmailJS no cargado. Verifique la conexión a internet.');
-    return;
-  }
-  if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
-    console.info('[INSEIN Contact] Modo DEMO activo. Configure las credenciales de EmailJS.');
-    return;
-  }
+(function init() {
+  if (typeof emailjs === 'undefined') { console.warn('[INSEIN] EmailJS SDK no encontrado.'); return; }
+  if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') { console.info('[INSEIN] Modo DEMO activo.'); return; }
   emailjs.init(EMAILJS_CONFIG.publicKey);
-  console.info('[INSEIN Contact] EmailJS inicializado correctamente.');
+  console.info('[INSEIN] EmailJS listo → ' + EMAILJS_CONFIG.toEmail);
 })();
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  const form       = document.getElementById('contact-form');
-  const submitBtn  = document.getElementById('form-submit');
-  const statusEl   = document.getElementById('form-status');
-
+  const form      = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('form-submit');
+  const statusEl  = document.getElementById('form-status');
   if (!form) return;
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-
     const lang = localStorage.getItem('insein-lang') || 'es';
     const t    = window.i18n?.translations?.[lang] || {};
 
-    // Validación básica
-    const name    = form.querySelector('[name="from_name"]').value.trim();
-    const email   = form.querySelector('[name="from_email"]').value.trim();
-    const message = form.querySelector('[name="message"]').value.trim();
+    // Limpiar errores previos
+    form.querySelectorAll('.field-error').forEach(el => el.remove());
+    form.querySelectorAll('.form-control.error').forEach(el => el.classList.remove('error'));
 
-    if (!name || !email || !message) {
-      showStatus(lang === 'es' ? 'Por favor complete los campos requeridos.' : 'Please fill in required fields.', 'error');
-      return;
-    }
+    // Validar campos requeridos
+    const checks = [
+      { name: 'from_name',  msg: lang === 'es' ? 'Ingrese su nombre.' : 'Enter your name.' },
+      { name: 'from_email', msg: lang === 'es' ? 'Ingrese un correo válido.' : 'Enter a valid email.', email: true },
+      { name: 'service',    msg: lang === 'es' ? 'Seleccione un servicio.' : 'Select a service.' },
+      { name: 'message',    msg: lang === 'es' ? 'Escriba su mensaje.' : 'Write your message.' },
+    ];
 
-    // Estado: enviando
-    submitBtn.disabled = true;
+    let valid = true;
+    checks.forEach(({ name, msg, email }) => {
+      const field = form.querySelector(`[name="${name}"]`);
+      const val   = field?.value?.trim();
+      const ok    = email ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) : !!val;
+      if (!ok) {
+        valid = false;
+        field?.classList.add('error');
+        const err = document.createElement('span');
+        err.className = 'field-error';
+        err.textContent = msg;
+        err.style.cssText = 'display:block;font-size:0.7rem;color:#ff4d4d;margin-top:4px;';
+        field?.parentNode?.appendChild(err);
+      }
+    });
+
+    if (!valid) return;
+
+    submitBtn.disabled    = true;
     submitBtn.textContent = t.form_sending || 'Enviando...';
-    statusEl.textContent = '';
-    statusEl.className = 'form-status';
+    clearStatus();
 
     try {
-      // ── MODO DEMO (para pruebas locales) ──
       if (EMAILJS_CONFIG.demoMode || EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
-        await simulateSend();
+        await new Promise(r => setTimeout(r, 1600));
         showStatus(t.form_success || '✓ Solicitud recibida. Un especialista se contactará pronto.', 'success');
         form.reset();
-        return;
+      } else {
+        await emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
+        showStatus(t.form_success || '✓ Solicitud recibida.', 'success');
+        form.reset();
       }
-
-      // ── ENVÍO REAL con EmailJS ──
-      await emailjs.sendForm(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        form
-      );
-
-      showStatus(t.form_success || '✓ Solicitud recibida. Un especialista se contactará pronto.', 'success');
-      form.reset();
-
-    } catch (error) {
-      console.error('[INSEIN Contact] Error EmailJS:', error);
-      showStatus(t.form_error || '✗ Error al enviar. Contáctenos a info@inseinsrl.com', 'error');
+    } catch (err) {
+      console.error('[INSEIN] Error EmailJS:', err);
+      showStatus(t.form_error || '✗ Error al enviar. Escríbanos a info@inseinsrl.com', 'error');
     } finally {
-      submitBtn.disabled = false;
-      const submitText = document.querySelector('[data-i18n="form_submit"]');
-      submitBtn.textContent = submitText?.textContent || (lang === 'es' ? 'Enviar Solicitud' : 'Send Request');
+      submitBtn.disabled    = false;
+      submitBtn.textContent = t.form_submit || (lang === 'es' ? 'Enviar Solicitud' : 'Send Request');
     }
   });
 
-  function showStatus(message, type) {
-    statusEl.textContent = message;
-    statusEl.className = `form-status ${type}`;
-    // Auto-limpiar después de 8 segundos en éxito
-    if (type === 'success') {
-      setTimeout(() => {
-        statusEl.textContent = '';
-        statusEl.className = 'form-status';
-      }, 8000);
-    }
+  function showStatus(msg, type) {
+    statusEl.textContent = msg;
+    statusEl.className   = 'form-status ' + type;
+    if (type === 'success') setTimeout(clearStatus, 9000);
+  }
+  function clearStatus() {
+    statusEl.textContent = '';
+    statusEl.className   = 'form-status';
   }
 
-  function simulateSend() {
-    return new Promise(resolve => setTimeout(resolve, 1500));
-  }
+  // Limpiar errores al tipear
+  form.querySelectorAll('.form-control').forEach(input => {
+    input.addEventListener('input', () => {
+      input.classList.remove('error');
+      input.parentNode?.querySelector('.field-error')?.remove();
+    });
+  });
 });
