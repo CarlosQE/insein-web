@@ -1,0 +1,249 @@
+/* ============================================================
+   INSEIN SRL — Sprint 5 CSS
+   Socios Estratégicos, Blog mejorado, ajustes finales
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   SOCIOS ESTRATÉGICOS
+───────────────────────────────────────────── */
+.partners {
+  padding: 96px 0;
+  background: var(--dark-2);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border-dim);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.partners-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.partners-subtitle {
+  font-size: 0.82rem;
+  color: var(--steel);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-top: 16px;
+}
+
+/* Grid de logos */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+@media (min-width: 640px)  { .partners-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .partners-grid { grid-template-columns: repeat(5, 1fr); } }
+
+.partner-card {
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  aspect-ratio: 16 / 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  transition: border-color var(--transition), background var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(110,214,14,0.04) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.partner-card:hover {
+  border-color: var(--border);
+  background: rgba(110,214,14,0.02);
+}
+
+.partner-card:hover::before { opacity: 1; }
+
+.partner-logo-img {
+  max-width: 100%;
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(0.6);
+  transition: filter 0.4s ease;
+}
+
+.partner-card:hover .partner-logo-img {
+  filter: brightness(0) invert(0.9);
+}
+
+/* Placeholder para socios sin logo aún */
+.partner-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.partner-placeholder-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--green-glow);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+}
+
+.partner-name {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.partner-sector {
+  font-size: 0.6rem;
+  color: var(--steel);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Card destacada (cliente activo) */
+.partner-card.featured {
+  border-color: rgba(110,214,14,0.2);
+  background: rgba(110,214,14,0.03);
+}
+
+.partner-card.featured .partner-name { color: var(--green); }
+
+.partner-featured-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark);
+  background: var(--green);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+}
+
+/* ─────────────────────────────────────────────
+   BLOG — Mejoras Sprint 5
+───────────────────────────────────────────── */
+.blog-card {
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Reading time badge */
+.blog-read-time {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blog-read-time::before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 1px;
+  background: var(--steel);
+}
+
+/* ─────────────────────────────────────────────
+   MEJORAS GLOBALES FINALES
+───────────────────────────────────────────── */
+
+/* Smooth page transitions */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Print styles básicos */
+@media print {
+  .navbar, .whatsapp-float, .scroll-progress,
+  .cursor-dot, .cursor-ring, .ticker-section { display: none !important; }
+  body { background: white; color: #000; }
+  .section-title { color: #000; }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --green: #00ff00;
+    --border: rgba(0, 255, 0, 0.4);
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker-track { animation: none; }
+  .scroll-progress { transition: none; }
+}
+
+/* ─────────────────────────────────────────────
+   SEO / ACCESIBILIDAD — Skip link
+───────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--green);
+  color: var(--dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  z-index: 10000;
+  border-radius: var(--radius);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — Ajustes finales
+───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .partners-header { flex-direction: column; align-items: flex-start; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .partner-card { aspect-ratio: 4/3; }
+}

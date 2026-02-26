@@ -163,6 +163,26 @@ const translations = {
 
     // WHATSAPP
     wa_label: 'Consulta rápida',
+    // ── SPRINT 5 — NAV & ACCESIBILIDAD ──
+    nav_partners:  'Socios',
+    skip_link:     'Saltar al contenido principal',
+
+    // ── SPRINT 5 — SOCIOS ESTRATÉGICOS ──
+    partners_tag:       'Socios y Clientes',
+    partners_title_1:   'Trabajamos con',
+    partners_title_2:   'líderes del sector',
+    partners_subtitle:  'Nuestros socios estratégicos comparten el compromiso con la seguridad, la calidad técnica y la mejora continua en sus operaciones.',
+    partners_active:    'Cliente Activo',
+    partners_sector_mining:      'Minería · Potosí',
+    partners_sector_energy:      'Energía · Bolivia',
+    partners_sector_construction:'Construcción · Bolivia',
+    partners_sector_epp:         'Equipos · Nacional',
+    partners_sector_hydro:       'Hidrocarburos · Tarija',
+    partners_p2_name:   'Empresa Energética',
+    partners_p3_name:   'Constructora Industrial',
+    partners_p4_name:   'Proveedor de EPP',
+    partners_p5_name:   'Empresa de Hidrocarburos',
+    partners_note:      '* Los logotipos de nuestros socios serán actualizados próximamente',
 
     // ── SPRINT 3 — NOSOTROS ──
     about_s3_title_1: 'Ingeniería',
@@ -455,6 +475,26 @@ const translations = {
 
     // WHATSAPP
     wa_label: 'Quick consultation',
+    // ── SPRINT 5 — NAV & ACCESSIBILITY ──
+    nav_partners:  'Partners',
+    skip_link:     'Skip to main content',
+
+    // ── SPRINT 5 — STRATEGIC PARTNERS ──
+    partners_tag:       'Partners & Clients',
+    partners_title_1:   'We work with',
+    partners_title_2:   'industry leaders',
+    partners_subtitle:  'Our strategic partners share our commitment to safety, technical quality and continuous improvement in their operations.',
+    partners_active:    'Active Client',
+    partners_sector_mining:      'Mining · Potosí',
+    partners_sector_energy:      'Energy · Bolivia',
+    partners_sector_construction:'Construction · Bolivia',
+    partners_sector_epp:         'Equipment · National',
+    partners_sector_hydro:       'Hydrocarbons · Tarija',
+    partners_p2_name:   'Energy Company',
+    partners_p3_name:   'Industrial Contractor',
+    partners_p4_name:   'PPE Supplier',
+    partners_p5_name:   'Hydrocarbons Company',
+    partners_note:      '* Partner logos will be updated soon',
 
     // ── SPRINT 3 — ABOUT ──
     about_s3_title_1: 'Engineering',
@@ -476,16 +516,16 @@ const translations = {
     timeline_tag:    'INSEIN History',
     timeline_title_1: 'Our',
     timeline_title_2: ' Journey',
-    tl_year_1: '2019', tl_event_1: 'Founded',
-    tl_desc_1: 'INSEIN SRL is established in Tarija, Bolivia, with the goal of bridging the gap in specialized industrial safety services in the country.',
-    tl_year_2: '2020', tl_event_2: 'First projects',
-    tl_desc_2: 'Operations begin with contingency plans and technical training for companies in the Bolivian energy sector.',
-    tl_year_3: '2022', tl_event_3: 'Service expansion',
-    tl_desc_3: 'Incorporation of Occupational Health and Occupational Physiotherapy, consolidating the comprehensive service portfolio.',
-    tl_year_4: '2023', tl_event_4: 'San Cristóbal Mine',
-    tl_desc_4: 'Contract begins with San Cristóbal Mine as industrial safety provider.',
-    tl_year_5: '2026', tl_event_5: 'International expansion',
-    tl_desc_5: 'With over 50 active specialists, INSEIN SRL plans expansion to mining markets in Peru, Chile and Argentina.',
+    tl_year_1: '2023', tl_event_1: 'Founded',
+    tl_desc_1: 'INSEIN SRL is established in Tarija, Bolivia, with the mission of providing international-level industrial safety engineering to Bolivian industry.',
+    tl_year_2: '2024', tl_event_2: 'First industrial contracts',
+    tl_desc_2: 'Operations begin with contingency plans, fire brigades and technical training for companies in the Bolivian energy and mining sectors.',
+    tl_year_3: '2024', tl_event_3: 'Complete portfolio',
+    tl_desc_3: 'Addition of Occupational Health and Occupational Physiotherapy, consolidating a portfolio of 9 specialized services.',
+    tl_year_4: '2025', tl_event_4: 'San Cristóbal Mine',
+    tl_desc_4: 'Contract begins with San Cristóbal Mine — one of the largest mining projects in the world — as industrial safety provider.',
+    tl_year_5: '2025', tl_event_5: 'Accelerated growth',
+    tl_desc_5: 'We surpass 50 active field specialists and consolidate our presence in Tarija, Potosí and central Bolivia.',
 
     // ── SPRINT 3 — TEAM ──
     team_tag: 'Our Team',
