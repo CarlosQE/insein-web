@@ -40,7 +40,7 @@
 }
 
 @media (min-width: 640px)  { .partners-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1024px) { .partners-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 1024px) { .partners-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .partner-card {
   background: var(--surface);

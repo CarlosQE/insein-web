@@ -1,6 +1,6 @@
 /* ============================================================
    INSEIN SRL — Sistema de Diseño CSS
-   Paleta oficial: #6ed60e | #6c7f88 | #fefefe | #0d0f12
+   Paleta oficial: #78be44 | #6b7c82 | #fefefe | #0d0f12
    Tipografías: Barlow Condensed (display) + DM Sans (body)
    ============================================================ */
 
@@ -8,17 +8,17 @@
 
 /* ── Variables CSS ── */
 :root {
-  --green:       #6ed60e;
-  --green-dim:   #4fa00a;
-  --green-glow:  rgba(110, 214, 14, 0.15);
-  --steel:       #6c7f88;
-  --steel-light: #8fa0aa;
+  --green:       #78be44;
+  --green-dim:   #5a8f33;
+  --green-glow:  rgba(120, 190, 68, 0.15);
+  --steel:       #6b7c82;
+  --steel-light: #8c9da5;
   --white:       #fefefe;
   --dark:        #0d0f12;
   --dark-2:      #111518;
   --surface:     #161b22;
   --surface-2:   #1c2330;
-  --border:      rgba(110, 214, 14, 0.12);
+  --border:      rgba(120, 190, 68, 0.12);
   --border-dim:  rgba(255, 255, 255, 0.06);
 
   --font-display: 'Barlow Condensed', sans-serif;
@@ -189,7 +189,7 @@ body::before {
 }
 
 .nav-logo img {
-  height: 75px;
+  height: 36px;
   width: auto;
 }
 
@@ -387,8 +387,8 @@ body::before {
   inset: 0;
   z-index: 1;
   background-image:
-    linear-gradient(rgba(110,214,14,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(110,214,14,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(120,190,68,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,190,68,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, transparent 80%);
 }
@@ -775,7 +775,7 @@ body::before {
   text-align: center;
 }
 
-.about-stat-badge .big {
+.about-stat-badge .big { 
   font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 900;
