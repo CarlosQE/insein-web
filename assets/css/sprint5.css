@@ -61,14 +61,14 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(110,214,14,0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(120,190,68,0.04) 0%, transparent 60%);
   opacity: 0;
   transition: opacity var(--transition);
 }
 
 .partner-card:hover {
   border-color: var(--border);
-  background: rgba(110,214,14,0.02);
+  background: rgba(120,190,68,0.02);
 }
 
 .partner-card:hover::before { opacity: 1; }
@@ -126,8 +126,8 @@
 
 /* Card destacada (cliente activo) */
 .partner-card.featured {
-  border-color: rgba(110,214,14,0.2);
-  background: rgba(110,214,14,0.03);
+  border-color: rgba(120,190,68,0.2);
+  background: rgba(120,190,68,0.03);
 }
 
 .partner-card.featured .partner-name { color: var(--green); }
@@ -247,3 +247,136 @@
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
   .partner-card { aspect-ratio: 4/3; }
 }
+
+
+/* ══════════════════════════════════════════════════
+   SPRINT 6 — Partner logo tipográfico
+══════════════════════════════════════════════════ */
+.partner-logo-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.partner-logo-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.partner-logo-wordmark {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+.partner-logo-wordmark small {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--steel-light);
+  margin-top: 2px;
+}
+
+.partner-logo-type--fire .partner-logo-icon  { color: #e8542a; }
+.partner-logo-type--fire .partner-logo-wordmark { color: #f0d4c8; }
+.partner-logo-type--fire .partner-logo-wordmark small { color: #e8542a; }
+.partner-logo-type--shield .partner-logo-icon { color: var(--green); }
+.partner-logo-type--tech .partner-logo-icon   { color: #78b4e0; }
+.partner-logo-type--tech .partner-logo-wordmark { color: #78b4e0; }
+.partner-logo-type--industrial .partner-logo-icon { color: var(--steel-light); }
+
+.partner-card:hover .partner-logo-icon {
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
+
+/* ══════════════════════════════════════════════════
+   SPRINT 6 — Blog cards como enlaces externos
+══════════════════════════════════════════════════ */
+.blog-card-link-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-card-img--external {
+  position: relative;
+}
+
+.blog-external-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(13, 15, 18, 0.82);
+  color: var(--green);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 2px;
+  border: 1px solid rgba(120, 190, 68, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.blog-external-badge--internal {
+  color: #78b4e0;
+  border-color: rgba(120, 180, 224, 0.3);
+}
+
+.blog-card-img--internal img {
+  filter: brightness(0.7) hue-rotate(170deg);
+}
+
+.blog-read-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.blog-card:hover .blog-read-cta { gap: 10px; }
+
+/* ══════════════════════════════════════════════════
+   SPRINT 6 — Hero título sin badge / ajuste espaciado
+══════════════════════════════════════════════════ */
+.hero-content .hero-title {
+  padding-top: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   SPRINT 6 — Tipografía Magistral approx con Barlow Condensed
+   (Magistral Extra Cond es fuente comercial CatFonts,
+    no disponible en web sin licencia. Barlow Condensed
+    es la aproximación más cercana disponible en Google Fonts)
+══════════════════════════════════════════════════ */
+/* Ya se usa Barlow Condensed como --font-display.
+   Si se adquiere la licencia de Magistral, agregar:
+   @font-face {
+     font-family: 'Magistral';
+     src: url('../fonts/MagistralExtraCond.woff2') format('woff2');
+     font-weight: 700;
+   }
+   y cambiar --font-display: 'Magistral', 'Barlow Condensed', sans-serif;
+*/

@@ -15,11 +15,11 @@ const translations = {
     nav_cta:       'Solicitar Cotización',
 
     // HERO
-    hero_badge:    'Cliente Activo: Minera San Cristóbal, Bolivia',
-    hero_title_1:  'Protección',
-    hero_title_2:  'Eléctrica &',
-    hero_title_3:  'Contra Incendios',
-    hero_desc:     'Especialistas en seguridad eléctrica NFPA 70E y protección contra incendios NFPA 1. Desde el primer día operando en Minera San Cristóbal — la mina de zinc más grande del mundo.',
+    hero_badge:    '',
+    hero_title_1:  'Ingeniería en',
+    hero_title_2:  'Seguridad Eléctrica',
+    hero_title_3:  'y Control de Incendios',
+    hero_desc:     'Donde el voltaje y el fuego son una realidad, INSEIN responde con precisión técnica y presencia real en terreno.',
     hero_cta_1:    'Ver Servicios',
     hero_cta_2:    'Solicitar Cotización',
     stat_1_num:    '+50',
@@ -114,9 +114,9 @@ const translations = {
     cert_ibnorca_desc: 'Normas bolivianas de seguridad industrial',
 
     // BLOG
-    blog_tag:     'Conocimiento Industrial',
-    blog_title_1: 'Últimas',
-    blog_title_2: 'Publicaciones',
+    blog_tag:     'Recursos & Conocimiento',
+    blog_title_1: 'Referencias',
+    blog_title_2: 'del Sector',
     blog_cta:     'Ver todos los artículos',
     blog_read:    'Leer artículo',
     blog_1_cat:   'Seguridad Industrial',
@@ -131,8 +131,8 @@ const translations = {
 
     // CONTACT
     contact_tag:     'Trabajemos Juntos',
-    contact_title_1: 'Solicite su',
-    contact_title_2: 'Cotización',
+    contact_title_1: 'Contáctenos',
+    contact_title_2: 'con INSEIN',
     contact_desc:    'Contamos con la flexibilidad técnica para adaptarnos a las necesidades de su planta o proyecto en cualquier punto de Bolivia y el mundo.',
     contact_loc_label:   'Sede Principal',
     contact_loc_value:   'Tarija, Bolivia',
@@ -163,14 +163,26 @@ const translations = {
 
     // WHATSAPP
     wa_label: 'Consulta rápida',
+
+    // ── SPRINT 6 — Servicios nuevos ──
+    svc_arc_cat:        'Seguridad Eléctrica',
+    svc_arc_title:      'Análisis de Riesgo, Choque y Arco Eléctrico',
+    svc_arc_desc:       'Evaluación técnica del riesgo de choque y energía de arco eléctrico según NFPA 70E: categorías de EPP, distancias de seguridad, etiquetado de equipos y límites de aproximación.',
+    svc_cap_elec_cat:   'Capacitación',
+    svc_cap_elec_title: 'Capacitación en Seguridad Eléctrica',
+    svc_cap_elec_desc:  'Formación certificada en NFPA 70E, procedimientos LOTO, análisis de arco eléctrico y trabajo seguro en instalaciones de media y alta tensión.',
+    svc_cap_fire_cat:   'Capacitación',
+    svc_cap_fire_title: 'Capacitación en Protección Contra Incendios',
+    svc_cap_fire_desc:  'Formación práctica en prevención, detección y control de incendios industriales bajo normativa NFPA 1, NFPA 72 e IBNORCA para brigadas y supervisores.',
+
     // ── SPRINT 5 — NAV & ACCESIBILIDAD ──
-    nav_partners:  'Socios',
+    nav_partners:  'Alianzas',
     skip_link:     'Saltar al contenido principal',
 
     // ── SPRINT 5 — SOCIOS ESTRATÉGICOS ──
-    partners_tag:       'Socios Estratégicos',
-    partners_title_1:   'Respaldo técnico',
-    partners_title_2:   'internacional',
+    partners_tag:       'Alianzas Estratégicas',
+    partners_title_1:   'Nuestras',
+    partners_title_2:   'Alianzas Estratégicas',
     partners_subtitle:  'Nuestros socios estratégicos son organizaciones líderes en seguridad eléctrica y protección contra incendios a nivel regional — alianzas que nos permiten resolver proyectos de la más alta complejidad.',
     partners_active:    'Cliente Activo',
     partners_sector_iesrc:   'Seguridad Industrial · Bolivia',
@@ -328,7 +340,7 @@ const translations = {
     hero_title_1:  'Industrial',
     hero_title_2:  'Safety',
     hero_title_3:  'Excellence',
-    hero_desc:     'NFPA 70E electrical safety and NFPA 1 fire protection specialists. Operating inside Minera San Cristóbal — the world\'s largest zinc mine — since day one.',
+    hero_desc:     'Where voltage and fire are a reality, INSEIN responds with technical precision and real field presence.',
     hero_cta_1:    'View Services',
     hero_cta_2:    'Request Quote',
     stat_1_num:    '+50',
@@ -423,9 +435,9 @@ const translations = {
     cert_ibnorca_desc: 'Bolivian industrial safety standards',
 
     // BLOG
-    blog_tag:     'Industrial Knowledge',
-    blog_title_1: 'Latest',
-    blog_title_2: 'Publications',
+    blog_tag:     'Resources & Knowledge',
+    blog_title_1: 'Sector',
+    blog_title_2: 'References',
     blog_cta:     'View all articles',
     blog_read:    'Read article',
     blog_1_cat:   'Industrial Safety',
@@ -473,13 +485,13 @@ const translations = {
     // WHATSAPP
     wa_label: 'Quick consultation',
     // ── SPRINT 5 — NAV & ACCESSIBILITY ──
-    nav_partners:  'Partners',
+    nav_partners:  'Alliances',
     skip_link:     'Skip to main content',
 
     // ── SPRINT 5 — STRATEGIC PARTNERS ──
-    partners_tag:       'Strategic Partners',
-    partners_title_1:   'International technical',
-    partners_title_2:   'backing',
+    partners_tag:       'Strategic Alliances',
+    partners_title_1:   'Our',
+    partners_title_2:   'Strategic Alliances',
     partners_subtitle:  'Our strategic partners are leading organizations in electrical safety and fire protection across the region — alliances that allow us to handle the most complex projects.',
     partners_active:    'Active Client',
     partners_sector_iesrc:   'Industrial Safety · Bolivia',
