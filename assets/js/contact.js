@@ -1,13 +1,12 @@
 /**
- * INSEIN SRL — Módulo de Contacto (Sprint 4)
- * EmailJS integrado, validación completa, UX de estado mejorada
+ * INSEIN SRL — Módulo de Contacto
+ * EmailJS con Outlook / Microsoft 365
  *
- * CONFIGURACIÓN:
- * 1. Crear cuenta en https://www.emailjs.com (gratis: 200 emails/mes)
- * 2. Conectar servicio con info@inseinsrl.com
- * 3. Crear template con: {{from_name}}, {{company}}, {{from_email}},
- *    {{phone}}, {{service}}, {{message}}
- * 4. Reemplazar los 3 valores de abajo y cambiar demoMode: false
+ * CONFIGURACIÓN (reemplazar con tus credenciales reales):
+ *   publicKey  → Account > General > Public Key
+ *   serviceId  → Email Services > nombre del servicio
+ *   templateId → Email Templates > nombre de la plantilla
+ *   demoMode   → false para envío real
  */
 
 const EMAILJS_CONFIG = {
@@ -18,14 +17,22 @@ const EMAILJS_CONFIG = {
   toEmail:    'info@inseinsrl.com',
 };
 
-(function init() {
-  if (typeof emailjs === 'undefined') { console.warn('[INSEIN] EmailJS SDK no encontrado.'); return; }
-  if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') { console.info('[INSEIN] Modo DEMO activo.'); return; }
-  emailjs.init(EMAILJS_CONFIG.publicKey);
-  console.info('[INSEIN] EmailJS listo → ' + EMAILJS_CONFIG.toEmail);
-})();
-
+// ─── Init + Formulario ───────────────────────────────────────
+// Todo dentro de DOMContentLoaded para garantizar que el SDK
+// (cargado sin defer en <head>) ya esté disponible.
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Inicializar EmailJS
+  if (typeof emailjs === 'undefined') {
+    console.error('[INSEIN] ❌ EmailJS SDK no encontrado. Verificar el <script> en index.html.');
+  } else if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
+    console.info('[INSEIN] ⚠️  Modo DEMO activo — reemplazar credenciales en contact.js');
+  } else {
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+    console.info('[INSEIN] ✅ EmailJS inicializado → ' + EMAILJS_CONFIG.toEmail);
+  }
+
+  // ─── Formulario ─────────────────────────────────────────────
   const form      = document.getElementById('contact-form');
   const submitBtn = document.getElementById('form-submit');
   const statusEl  = document.getElementById('form-status');
@@ -33,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
+
     const lang = localStorage.getItem('insein-lang') || 'es';
     const t    = window.i18n?.translations?.[lang] || {};
 
@@ -42,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Validar campos requeridos
     const checks = [
-      { name: 'from_name',  msg: lang === 'es' ? 'Ingrese su nombre.' : 'Enter your name.' },
+      { name: 'from_name',  msg: lang === 'es' ? 'Ingrese su nombre.'        : 'Enter your name.' },
       { name: 'from_email', msg: lang === 'es' ? 'Ingrese un correo válido.' : 'Enter a valid email.', email: true },
-      { name: 'service',    msg: lang === 'es' ? 'Seleccione un servicio.' : 'Select a service.' },
-      { name: 'message',    msg: lang === 'es' ? 'Escriba su mensaje.' : 'Write your message.' },
+      { name: 'service',    msg: lang === 'es' ? 'Seleccione un servicio.'   : 'Select a service.' },
+      { name: 'message',    msg: lang === 'es' ? 'Escriba su mensaje.'       : 'Write your message.' },
     ];
 
     let valid = true;
@@ -56,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!ok) {
         valid = false;
         field?.classList.add('error');
-        const err = document.createElement('span');
-        err.className = 'field-error';
+        const err       = document.createElement('span');
+        err.className   = 'field-error';
         err.textContent = msg;
         err.style.cssText = 'display:block;font-size:0.7rem;color:#ff4d4d;margin-top:4px;';
         field?.parentNode?.appendChild(err);
@@ -66,23 +74,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!valid) return;
 
+    // Estado: enviando
     submitBtn.disabled    = true;
-    submitBtn.textContent = t.form_sending || 'Enviando...';
+    submitBtn.textContent = t.form_sending || (lang === 'es' ? 'Enviando...' : 'Sending...');
     clearStatus();
 
     try {
+      // Modo DEMO
       if (EMAILJS_CONFIG.demoMode || EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
         await new Promise(r => setTimeout(r, 1600));
-        showStatus(t.form_success || '✓ Solicitud recibida. Un especialista se contactará pronto.', 'success');
+        showStatus(
+          t.form_success || '✓ Solicitud recibida. Un especialista se contactará pronto.',
+          'success'
+        );
         form.reset();
-      } else {
-        await emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
-        showStatus(t.form_success || '✓ Solicitud recibida.', 'success');
-        form.reset();
+        return;
       }
+
+      if (typeof emailjs === 'undefined') throw new Error('EmailJS SDK no disponible');
+
+      // Envío real
+      const result = await emailjs.sendForm(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        form
+      );
+
+      console.info('[INSEIN] ✅ Enviado. Status:', result.status, result.text);
+      showStatus(
+        t.form_success || '✓ Solicitud recibida. Un especialista se contactará pronto.',
+        'success'
+      );
+      form.reset();
+
     } catch (err) {
-      console.error('[INSEIN] Error EmailJS:', err);
-      showStatus(t.form_error || '✗ Error al enviar. Escríbanos a info@inseinsrl.com', 'error');
+      console.error('[INSEIN] ❌ Error al enviar:', {
+        message: err?.message || err?.text || 'Sin detalle',
+        status:  err?.status,
+      });
+
+      let errMsg = t.form_error || `✗ Error al enviar. Escríbanos a ${EMAILJS_CONFIG.toEmail}`;
+      if (err?.status === 400) errMsg = '✗ Credenciales incorrectas (error 400). Contactar administrador.';
+      if (err?.status === 401) errMsg = '✗ Public Key inválida (error 401). Verificar credenciales.';
+      if (err?.status === 412) errMsg = '✗ Servicio de correo desconectado (error 412). Verificar EmailJS.';
+      if (err?.status === 429) errMsg = '✗ Límite mensual alcanzado (error 429). Intente más tarde.';
+
+      showStatus(errMsg, 'error');
+
     } finally {
       submitBtn.disabled    = false;
       submitBtn.textContent = t.form_submit || (lang === 'es' ? 'Enviar Solicitud' : 'Send Request');
@@ -94,16 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
     statusEl.className   = 'form-status ' + type;
     if (type === 'success') setTimeout(clearStatus, 9000);
   }
+
   function clearStatus() {
     statusEl.textContent = '';
     statusEl.className   = 'form-status';
   }
 
-  // Limpiar errores al tipear
   form.querySelectorAll('.form-control').forEach(input => {
     input.addEventListener('input', () => {
       input.classList.remove('error');
       input.parentNode?.querySelector('.field-error')?.remove();
     });
   });
+
 });
