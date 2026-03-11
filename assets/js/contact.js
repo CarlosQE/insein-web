@@ -11,10 +11,10 @@
  */
 
 const EMAILJS_CONFIG = {
-  publicKey:  'YOUR_PUBLIC_KEY',
-  serviceId:  'YOUR_SERVICE_ID',
-  templateId: 'YOUR_TEMPLATE_ID',
-  demoMode:   true,
+  publicKey:  'N1z16qLqUaa2_wsTf',
+  serviceId:  'service_ed241d5',
+  templateId: 'template_1rty73q',
+  demoMode:   false,
   toEmail:    'info@inseinsrl.com',
 };
 

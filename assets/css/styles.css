@@ -189,7 +189,7 @@ body::before {
 }
 
 .nav-logo img {
-  height: 36px;
+  height: 70px;
   width: auto;
 }
 
@@ -211,7 +211,7 @@ body::before {
 .nav-logo-name span { color: var(--green); }
 
 .nav-logo-tagline {
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
