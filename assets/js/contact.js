@@ -1,30 +1,55 @@
 /**
  * INSEIN SRL — Módulo de Contacto
- * EmailJS con Outlook / Microsoft 365
+ * EmailJS + hCaptcha + Rate Limiting
  *
- * CONFIGURACIÓN (reemplazar con tus credenciales reales):
- *   publicKey  → Account > General > Public Key
- *   serviceId  → Email Services > nombre del servicio
- *   templateId → Email Templates > nombre de la plantilla
- *   demoMode   → false para envío real
  */
 
 const EMAILJS_CONFIG = {
   publicKey:  'N1z16qLqUaa2_wsTf',
-  serviceId:  'service_ed241d5',
+  serviceId:  'service_tqu5101',
   templateId: 'template_1rty73q',
   demoMode:   false,
   toEmail:    'info@inseinsrl.com',
 };
 
+// ─── Rate limiting — máx 3 envíos por hora por sesión ────────
+const RATE_LIMIT = {
+  max:      3,
+  windowMs: 60 * 60 * 1000, // 1 hora
+  key:      'insein_form_sends',
+};
+
+function getRateData() {
+  try {
+    return JSON.parse(sessionStorage.getItem(RATE_LIMIT.key) || '{"count":0,"firstAt":0}');
+  } catch { return { count: 0, firstAt: 0 }; }
+}
+
+function checkRateLimit() {
+  const data = getRateData();
+  const now  = Date.now();
+  if (now - data.firstAt > RATE_LIMIT.windowMs) {
+    sessionStorage.setItem(RATE_LIMIT.key, JSON.stringify({ count: 0, firstAt: now }));
+    return true;
+  }
+  return data.count < RATE_LIMIT.max;
+}
+
+function incrementRate() {
+  const data = getRateData();
+  const now  = Date.now();
+  sessionStorage.setItem(RATE_LIMIT.key, JSON.stringify({
+    count:   data.count + 1,
+    firstAt: data.firstAt || now,
+  }));
+}
+
 // ─── Init + Formulario ───────────────────────────────────────
-// Todo dentro de DOMContentLoaded para garantizar que el SDK
-// (cargado sin defer en <head>) ya esté disponible.
 document.addEventListener('DOMContentLoaded', () => {
 
   // Inicializar EmailJS
   if (typeof emailjs === 'undefined') {
-    console.error('[INSEIN] ❌ EmailJS SDK no encontrado. Verificar el <script> en index.html.');
+    console.error('[INSEIN] ❌ EmailJS SDK no encontrado.');
   } else if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
     console.info('[INSEIN] ⚠️  Modo DEMO activo — reemplazar credenciales en contact.js');
   } else {
@@ -32,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.info('[INSEIN] ✅ EmailJS inicializado → ' + EMAILJS_CONFIG.toEmail);
   }
 
-  // ─── Formulario ─────────────────────────────────────────────
-  const form      = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('form-submit');
-  const statusEl  = document.getElementById('form-status');
+  const form       = document.getElementById('contact-form');
+  const submitBtn  = document.getElementById('form-submit');
+  const statusEl   = document.getElementById('form-status');
+  const captchaErr = document.getElementById('captcha-error');
   if (!form) return;
 
   form.addEventListener('submit', async e => {
@@ -44,11 +69,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const lang = localStorage.getItem('insein-lang') || 'es';
     const t    = window.i18n?.translations?.[lang] || {};
 
-    // Limpiar errores previos
+    // ── 1. Rate limiting ──────────────────────────────────────
+    if (!checkRateLimit()) {
+      showStatus(
+        lang === 'es'
+          ? '✗ Demasiados intentos. Espere un momento antes de volver a enviar.'
+          : '✗ Too many attempts. Please wait before sending again.',
+        'error'
+      );
+      return;
+    }
+
+    // ── 2. Validar hCaptcha ───────────────────────────────────
+    const captchaResponse = hcaptcha.getResponse();
+    if (captchaErr) captchaErr.style.display = 'none';
+
+    if (!captchaResponse) {
+      if (captchaErr) captchaErr.style.display = 'block';
+      return;
+    }
+
+    // ── 3. Limpiar errores de campos ──────────────────────────
     form.querySelectorAll('.field-error').forEach(el => el.remove());
     form.querySelectorAll('.form-control.error').forEach(el => el.classList.remove('error'));
 
-    // Validar campos requeridos
+    // ── 4. Validar campos requeridos ──────────────────────────
     const checks = [
       { name: 'from_name',  msg: lang === 'es' ? 'Ingrese su nombre.'        : 'Enter your name.' },
       { name: 'from_email', msg: lang === 'es' ? 'Ingrese un correo válido.' : 'Enter a valid email.', email: true },
@@ -74,9 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!valid) return;
 
-    // Estado: enviando
+    // ── 5. Enviar ─────────────────────────────────────────────
     submitBtn.disabled    = true;
-    submitBtn.textContent = t.form_sending || (lang === 'es' ? 'Enviando...' : 'Sending...');
+    submitBtn.textContent = lang === 'es' ? 'Enviando...' : 'Sending...';
     clearStatus();
 
     try {
@@ -88,24 +133,21 @@ document.addEventListener('DOMContentLoaded', () => {
           'success'
         );
         form.reset();
+        hcaptcha.reset();
         return;
       }
 
       if (typeof emailjs === 'undefined') throw new Error('EmailJS SDK no disponible');
 
-      // Envío real
-      const result = await emailjs.sendForm(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        form
-      );
+      await emailjs.sendForm(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, form);
 
-      console.info('[INSEIN] ✅ Enviado. Status:', result.status, result.text);
+      incrementRate(); // Contar solo envíos exitosos
       showStatus(
         t.form_success || '✓ Solicitud recibida. Un especialista se contactará pronto.',
         'success'
       );
       form.reset();
+      hcaptcha.reset();
 
     } catch (err) {
       console.error('[INSEIN] ❌ Error al enviar:', {
@@ -113,13 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
         status:  err?.status,
       });
 
-      let errMsg = t.form_error || `✗ Error al enviar. Escríbanos a ${EMAILJS_CONFIG.toEmail}`;
-      if (err?.status === 400) errMsg = '✗ Credenciales incorrectas (error 400). Contactar administrador.';
-      if (err?.status === 401) errMsg = '✗ Public Key inválida (error 401). Verificar credenciales.';
-      if (err?.status === 412) errMsg = '✗ Servicio de correo desconectado (error 412). Verificar EmailJS.';
-      if (err?.status === 429) errMsg = '✗ Límite mensual alcanzado (error 429). Intente más tarde.';
+      let errMsg = `✗ Error al enviar. Escríbanos a ${EMAILJS_CONFIG.toEmail}`;
+      if (err?.status === 400) errMsg = '✗ Configuración incorrecta (400). Contactar administrador.';
+      if (err?.status === 401) errMsg = '✗ Public Key inválida (401). Verificar credenciales.';
+      if (err?.status === 412) errMsg = '✗ Servicio desconectado (412). Verificar EmailJS.';
+      if (err?.status === 429) errMsg = '✗ Límite mensual alcanzado (429). Intente más tarde.';
 
       showStatus(errMsg, 'error');
+      hcaptcha.reset(); // Forzar nueva verificación tras error
 
     } finally {
       submitBtn.disabled    = false;
@@ -127,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ─── Helpers UI ─────────────────────────────────────────────
   function showStatus(msg, type) {
     statusEl.textContent = msg;
     statusEl.className   = 'form-status ' + type;

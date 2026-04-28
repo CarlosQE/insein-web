@@ -60,6 +60,8 @@
 
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <!-- hCaptcha — protección anti-spam del formulario -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 
 <body>
@@ -1171,6 +1173,16 @@
                 required
               ></textarea>
             </div>
+
+            <!-- hCaptcha widget -->
+            <div class="h-captcha"
+                 data-sitekey="708824f8-0840-4f90-8936-dfeefda271f6"
+                 data-theme="dark"
+                 id="hcaptcha-widget">
+            </div>
+            <p id="captcha-error" style="display:none;font-size:0.7rem;color:#ff4d4d;margin-top:4px;">
+              Por favor completa la verificación de seguridad.
+            </p>
 
             <!-- Submit -->
             <button type="submit" id="form-submit" class="form-submit">
