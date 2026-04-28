@@ -2,19 +2,22 @@
 
 ![INSEIN SRL](assets/img/logo-imagotipo.png)
 
-> **Ingeniería en Seguridad Industrial | Salud Ocupacional | Capacitación Técnica**  
-> Bolivia — Servicios en todo el territorio nacional e internacionales
+> **Ingeniería en Seguridad Eléctrica y Control de Incendios**  
+> Tarija, Bolivia — Cobertura Nacional e Internacional
+
+🌐 **Live:** [carlosqe.github.io/insein-web](https://carlosqe.github.io/insein-web/)
 
 ---
 
-## 🏗️ Descripción del Proyecto
+## 📋 Descripción
 
-Sitio web corporativo de **INSEIN SRL**, empresa boliviana especializada en:
-- Gestión de emergencias y reacción ante incendios industriales
-- Planes de contingencia y paradas de planta
-- Salud ocupacional y fisioterapia ocupacional
-- Capacitaciones técnicas (señalización, electricidad, explosivos, alturas)
-- Seguridad en minería — Cliente actual: Minera San Cristóbal
+Sitio web corporativo de **INSEIN SRL**, empresa boliviana especializada en seguridad eléctrica industrial y protección contra incendios. El nombre INSEIN proviene de **IN**geniería en **SE**guridad Eléctrica e **IN**cendios.
+
+**Servicios principales:**
+- Seguridad Eléctrica (NFPA 70E, LOTO, análisis de arco eléctrico)
+- Protección Contra Incendios (NFPA 1, brigadas, planes de contingencia)
+- Salud Ocupacional y Fisioterapia Ocupacional
+- Capacitación Técnica especializada
 
 **Sede:** Tarija, Bolivia | **Cobertura:** Nacional e Internacional
 
@@ -22,14 +25,14 @@ Sitio web corporativo de **INSEIN SRL**, empresa boliviana especializada en:
 
 ## 🛠️ Stack Tecnológico
 
-| Capa | Tecnología | Justificación |
-|------|-----------|---------------|
-| Estructura | HTML5 semántico | Limpio, rápido, sin overhead |
-| Estilos | CSS3 + Variables nativas | Control total, sin framework pesado |
-| Interactividad | Vanilla JS (ES6+) | Cero dependencias, máximo rendimiento |
-| i18n | JS i18n object | Español / Inglés sin librerías externas |
-| Formulario | EmailJS | Funcional sin backend |
-| Deploy | GitHub Pages | Gratuito, integrado con el repo |
+| Capa | Tecnología |
+|------|-----------|
+| Estructura | HTML5 semántico |
+| Estilos | CSS3 con variables nativas (sin framework) |
+| Interactividad | Vanilla JS ES6+ (sin dependencias) |
+| Internacionalización | i18n propio — Español / Inglés |
+| Formulario de contacto | EmailJS + hCaptcha |
+| Hosting | GitHub Pages |
 
 ---
 
@@ -37,16 +40,17 @@ Sitio web corporativo de **INSEIN SRL**, empresa boliviana especializada en:
 
 ### Paleta Oficial
 ```css
---color-green:   #6ed60e;  /* Verde INSEIN — acento principal */
---color-steel:   #6c7f88;  /* Gris acero — color corporativo */
---color-white:   #fefefe;  /* Blanco — textos claros */
---color-dark:    #0d0f12;  /* Negro industrial — fondo */
---color-surface: #131820;  /* Superficie — cards */
+--green:       #78be44;   /* Verde INSEIN — acento principal */
+--steel:       #6b7c82;   /* Gris acero — color corporativo */
+--white:       #fefefe;   /* Blanco — textos claros */
+--dark:        #0d0f12;   /* Negro industrial — fondo */
+--surface:     #131820;   /* Superficie — cards y paneles */
 ```
 
-### Tipografías
-- **Display:** Barlow Condensed (headings impactantes)
-- **Body:** DM Sans (legible, moderno)
+### Tipografía
+- **Display:** Barlow Condensed — headings y títulos de impacto
+- **Body:** DM Sans — cuerpo de texto, legible y moderno
+- **Nota:** La tipografía corporativa oficial es Magistral Extra Cond (CatFonts, licencia comercial). Barlow Condensed es la aproximación web más cercana disponible en Google Fonts.
 
 ---
 
@@ -54,84 +58,136 @@ Sitio web corporativo de **INSEIN SRL**, empresa boliviana especializada en:
 
 ```
 insein-web/
-├── index.html              ← Landing principal
+├── index.html                   ← Página principal (única)
+├── CNAME                        ← Dominio personalizado (GitHub Pages)
 ├── assets/
 │   ├── css/
-│   │   └── styles.css      ← Estilos globales + variables
+│   │   ├── styles.css           ← Variables globales, base, navbar, hero, footer
+│   │   ├── sprint2.css          ← Ticker, galería lightbox, cards premium
+│   │   ├── sprint3.css          ← Certificaciones acordeón, timeline
+│   │   ├── sprint4.css          ← Formulario de contacto, sección why
+│   │   └── sprint5.css          ← Partners/alianzas, blog/recursos, hCaptcha
 │   ├── js/
-│   │   ├── main.js         ← Lógica principal, animaciones
-│   │   ├── i18n.js         ← Traducciones ES/EN
-│   │   └── contact.js      ← Formulario EmailJS
-│   └── img/                ← Logos y assets de imagen
-├── sections/               ← Documentación de secciones
-├── .github/
-│   └── ISSUE_TEMPLATE/     ← Plantillas de issues
-├── docs/
-│   └── DESIGN_SYSTEM.md    ← Guía de diseño
+│   │   ├── i18n.js              ← Traducciones ES / EN
+│   │   ├── main.js              ← Animaciones, scroll, cursor, tabs
+│   │   ├── contact.js           ← EmailJS + hCaptcha + rate limiting
+│   │   ├── sprint2.js           ← Lightbox galería
+│   │   └── sprint3.js           ← Acordeón certificaciones, contadores
+│   └── img/
+│       ├── logo-imagotipo.png   ← Logo completo (navbar, footer, og)
+│       └── logo-isotipo.png     ← Isotipo (favicon)
 └── README.md
 ```
 
 ---
 
-## 🚀 Metodología de Desarrollo — XP (Extreme Programming)
+## 🗂️ Secciones del Sitio
 
-### Sprints
-| Sprint | Contenido | Estado |
-|--------|-----------|--------|
-| Sprint 1 | Base, identidad visual, Hero, Nav, Footer | 🔄 En progreso |
-| Sprint 2 | Servicios, Portafolio, Galería | ⏳ Pendiente |
-| Sprint 3 | Nosotros, Equipo, Certificaciones | ⏳ Pendiente |
-| Sprint 4 | Contacto EmailJS, WhatsApp, i18n ES/EN | ⏳ Pendiente |
-| Sprint 5 | Blog, SEO, GitHub Pages, Dominio | ⏳ Pendiente |
-
-### Principios XP aplicados
-- **Iteraciones cortas** — entrega funcional en cada sprint
-- **Feedback continuo** — revisión al final de cada sprint
-- **Código simple** — sin sobreingeniería
-- **Refactoring continuo** — mejora en cada iteración
+| Sección | ID | Descripción |
+|---------|----|-------------|
+| Hero | `#hero` | Título principal, slogan, CTAs, stats animadas |
+| Ticker | — | Franja animada con servicios y alianzas |
+| Servicios | `#servicios` | 3 pestañas: Emergencias · Técnica · Salud |
+| ¿Por qué INSEIN? | `#por-que` | Diferenciadores y métricas clave |
+| Timeline | — | Historia corporativa 2024–2026 |
+| Alianzas | `#socios` | 6 socios estratégicos nacionales e internacionales |
+| Galería | `#galeria` | Portfolio visual con lightbox |
+| Certificaciones | `#certificaciones` | Acordeón de certificaciones NFPA / IBNORCA |
+| Recursos | `#blog` | NFPA.org · IEEE.org · Portal interno SharePoint |
+| Contacto | `#contacto` | Formulario EmailJS + hCaptcha |
 
 ---
 
-## ⚙️ Instalación y Desarrollo Local
+## ⚙️ Instalación Local
 
 ```bash
 # 1. Clonar el repositorio
 git clone https://github.com/CarlosQE/insein-web.git
-
-# 2. Entrar al directorio
 cd insein-web
 
-# 3. Abrir en navegador (no requiere servidor)
-# Doble click en index.html
-# O usar Live Server en VS Code (recomendado)
+# 2. Abrir con Live Server (VS Code) o directo en navegador
+# No requiere servidor ni dependencias npm
 ```
 
-### Extensiones VS Code recomendadas
-- **Live Server** — recarga automática
-- **Prettier** — formateo de código
-- **HTML CSS Support** — autocompletado
+**Extensiones VS Code recomendadas:** Live Server · Prettier · HTML CSS Support
 
 ---
 
-## 📧 Configuración de EmailJS (Sprint 4)
+## 📧 Configuración EmailJS
 
-1. Crear cuenta en [emailjs.com](https://www.emailjs.com)
-2. Crear servicio de email con `info@inseinsrl.com`
-3. Crear template de email
-4. Reemplazar en `assets/js/contact.js`:
-   - `YOUR_PUBLIC_KEY`
-   - `YOUR_SERVICE_ID`  
-   - `YOUR_TEMPLATE_ID`
+El formulario usa [EmailJS](https://emailjs.com) con Outlook / Microsoft 365.
+
+**Variables en `assets/js/contact.js`:**
+```javascript
+const EMAILJS_CONFIG = {
+  publicKey:  'tu_public_key',    // Account → General → Public Key
+  serviceId:  'service_xxxxxxx',  // Email Services → nombre del servicio
+  templateId: 'template_xxxxxxx', // Email Templates → nombre de la plantilla
+  demoMode:   false,              // true = simula envío sin credenciales
+  toEmail:    'info@inseinsrl.com',
+};
+```
+
+**Variables de la plantilla EmailJS:**
+`{{from_name}}` · `{{company}}` · `{{from_email}}` · `{{phone}}` · `{{service}}` · `{{message}}`
+
+**Seguridad adicional:** En el dashboard de EmailJS → Email Services → Settings → **Allowed Origins** agregar el dominio de producción para que la Public Key solo funcione desde el sitio oficial.
 
 ---
 
-## 🌐 Deploy en GitHub Pages
+## 🛡️ Seguridad
+
+| Medida | Implementación |
+|--------|---------------|
+| Anti-spam formulario | hCaptcha (tema oscuro, sitekey configurado) |
+| Rate limiting | Máx. 3 envíos/hora por sesión (sessionStorage) |
+| Links externos | `rel="noopener noreferrer"` en todos los `target="_blank"` |
+| EmailJS origin | Allowed Origins restringido al dominio de producción |
+| Datos sensibles | No hay backend secrets en el frontend — Public Key de EmailJS es de uso público por diseño |
+
+---
+
+## 🌐 Deploy y Dominio
+
+El sitio se despliega automáticamente desde la rama `main` vía GitHub Pages.
 
 ```bash
-# El deploy es automático desde la rama main
-# Activar en: Settings → Pages → Branch: main → / (root)
-# URL resultante: https://carlosqe.github.io/insein-web/
+# Deploy automático al hacer push
+git add .
+git commit -m "descripción del cambio"
+git push origin main
 ```
+
+**Para dominio personalizado (`www.inseinsrl.com`):**
+
+1. En el registrador de dominio, agregar registros DNS:
+
+| Tipo | Nombre | Valor |
+|------|--------|-------|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `carlosqe.github.io` |
+
+2. En GitHub → Settings → Pages → Custom domain: `www.inseinsrl.com`
+3. Activar **Enforce HTTPS**
+
+---
+
+## 🌍 Internacionalización (i18n)
+
+El sitio soporta **Español** e **Inglés** sin librerías externas. Todas las claves están centralizadas en `assets/js/i18n.js`.
+
+```javascript
+// Estructura del objeto de traducciones
+const translations = {
+  es: { hero_title_1: 'Ingeniería en', ... },
+  en: { hero_title_1: 'Engineering in', ... }
+};
+```
+
+El idioma se guarda en `localStorage` y persiste entre visitas.
 
 ---
 
@@ -140,8 +196,9 @@ cd insein-web
 **INSEIN SRL**  
 📍 Tarija, Bolivia  
 📧 info@inseinsrl.com  
-🌐 Próximamente: www.inseinsrl.com
+💬 WhatsApp: +591 72987377  
+🌐 [carlosqe.github.io/insein-web](https://carlosqe.github.io/insein-web/)
 
 ---
 
-*Desarrollado con metodología XP | © 2026 INSEIN SRL*
+*© 2026 INSEIN SRL — Todos los derechos reservados.*
